@@ -1,0 +1,196 @@
+{
+  "bindings": {
+    "commands": {
+      "codex-diff-review": {
+        "argv": [
+          "python3",
+          "-c",
+          "pass"
+        ],
+        "cwd": ".",
+        "env": []
+      },
+      "codex-plan-review": {
+        "argv": [
+          "python3",
+          "-c",
+          "pass"
+        ],
+        "cwd": ".",
+        "env": []
+      },
+      "lint": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import ast; ast.parse(open('greeting.py').read())"
+        ],
+        "cwd": ".",
+        "env": []
+      },
+      "test": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v"
+        ],
+        "cwd": ".",
+        "env": []
+      }
+    },
+    "paths": {
+      "architecture": [],
+      "artifacts": {
+        "plans": ".agents/artifacts/plans",
+        "specs": ".agents/artifacts/specs"
+      },
+      "context": [],
+      "hints": [],
+      "operations": [],
+      "rejections": [],
+      "standards": []
+    },
+    "tracker": {
+      "cli": "gh",
+      "credential_env": {
+        "unset_before_invocation": []
+      },
+      "kind": "github",
+      "repo_slug": "fagenorn/engine-fixture"
+    },
+    "vcs": {
+      "branch_pattern": "issue-<num>-<slug>",
+      "commit": {
+        "co_authored_by": false,
+        "signed": false
+      },
+      "default_branch": "main",
+      "integration_branch": "main",
+      "kind": "git",
+      "merge": {
+        "delete_branch": true,
+        "required_checks": [
+          "Tests"
+        ],
+        "strategy": "merge"
+      },
+      "worktree": {
+        "prefix": "worktree-",
+        "root": ".worktrees"
+      }
+    },
+    "workflow": {
+      "orchestration": {
+        "attempt_budget_minutes": 240,
+        "max_parallel": 2
+      },
+      "review": {
+        "code": "codex-diff-review",
+        "plan": "codex-plan-review"
+      },
+      "verification": [
+        "lint",
+        "test"
+      ]
+    }
+  },
+  "capabilities": {
+    "knowledge.architecture": {
+      "support": "unsupported"
+    },
+    "knowledge.context": {
+      "support": "unsupported"
+    },
+    "knowledge.hints": {
+      "support": "unsupported"
+    },
+    "knowledge.standards": {
+      "support": "unsupported"
+    },
+    "review.code": {
+      "support": "unsupported"
+    },
+    "review.plan": {
+      "support": "unsupported"
+    },
+    "tracker": {
+      "support": "supported"
+    },
+    "verification": {
+      "support": "supported"
+    },
+    "worktrees": {
+      "support": "supported"
+    }
+  },
+  "platform": {
+    "max_exclusive": "3.0.0",
+    "min_inclusive": "1.2.0"
+  },
+  "project": {
+    "id": "fagenorn/engine-fixture",
+    "name": "engine-fixture"
+  },
+  "projections": [],
+  "release": {
+    "profiles": {
+      "forge-main": {
+        "activation": "none",
+        "bindings": {
+          "adapters": {
+            "forge": {
+              "adapter": "github-forge"
+            }
+          },
+          "credentials": {
+            "forge-keyring": {
+              "adapter": "forge",
+              "class": "gh_keyring"
+            }
+          },
+          "principals": {
+            "maintainer": {
+              "class": "forge_write"
+            }
+          },
+          "targets": {
+            "repository": {
+              "adapter": "forge",
+              "branch": "main",
+              "kind": "github_repository",
+              "repository": "fagenorn/engine-fixture"
+            }
+          }
+        },
+        "limits": {},
+        "profile_version": 1,
+        "proof": {
+          "convergence_window_ms": 1800000,
+          "obligations": []
+        },
+        "publication": "none",
+        "recovery": {
+          "units": {}
+        },
+        "requirements": {
+          "adapters": {
+            "forge": {
+              "max_exclusive": "2.0.0",
+              "min_inclusive": "1.0.0"
+            }
+          }
+        },
+        "target": {
+          "concurrency_keys": [
+            "release/fagenorn/engine-fixture"
+          ],
+          "environment": "github-main"
+        }
+      }
+    }
+  },
+  "schema_version": 2
+}
